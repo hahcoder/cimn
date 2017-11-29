@@ -1,10 +1,6 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// $data = array(
-//    'logged' => FALSE
-// );
-// $this->session->set_userdata($data);
 $logged = $this->session->userdata('logged');
  ?>
 <body>

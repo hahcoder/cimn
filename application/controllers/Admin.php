@@ -23,20 +23,39 @@ class Admin extends CI_Controller {
 			    'title' => 'Admin Panel'
 			);
 
+
 	public function index()
 	{
 		$this->load->library('session');
-		$this->load->model('login_model');
-		
-		$this->load->view('template/head', $this->data);
-		$this->load->view('template/header');
+		$this->load->model('skin');
 
 		if($this->session->userdata('logged')){
-			$this->load->view('admin/admin');
+			$body = 'admin/admin';
 		}else{
-			$this->load->view('template/customer/login');
+			$body = 'templates/customer/login';
 		}
 
-		$this->load->view('template/footer');
+		$this->skin->getTemplate($this->data, null,$body, null);
 	}
+
+	public function login(){
+		$this->load->library('session');
+		$this->load->model('customer');
+		$data = $this->input->get();
+		if($data){
+			$u = $data['u'];
+			$p = $data['p'];
+			if ($u && $p) {
+				if ($this->customer->checkLogin($u, $p)) {
+					$data = array(
+					   'logged' => TRUE
+					);
+					$this->session->set_userdata($data);
+					$this->load->helper('url');
+					redirect(base_url().'admin');
+				}
+			}
+		}
+	}
+
 }
