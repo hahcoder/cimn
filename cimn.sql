@@ -21,6 +21,18 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`id`, `user_name`, `password`, `first_name`, `mid_name`, `last_name`, `type`, `email`) VALUES
 (1,	'hah',	'a24d1d2836b0c5aab059e3148bf34ab4',	'Ha',	'',	'Hoang',	1,	'hahoang.coder@gmail.com');
 
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE `post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `content` text NOT NULL,
+  `date_creat` datetime NOT NULL,
+  `date_edit` datetime NOT NULL,
+  `user_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 DROP TABLE IF EXISTS `user_type`;
 CREATE TABLE `user_type` (
   `type` int(11) NOT NULL AUTO_INCREMENT,
@@ -32,4 +44,4 @@ INSERT INTO `user_type` (`type`, `name`) VALUES
 (1,	'administrator'),
 (2,	'poster');
 
--- 2017-11-29 03:30:03
+-- 2017-12-01 09:28:23
