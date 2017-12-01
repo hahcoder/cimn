@@ -35,27 +35,36 @@ class Admin extends CI_Controller {
 			$body = 'templates/customer/login';
 		}
 
-		$this->skin->getTemplate($this->data, null,$body, null);
+		$this->skin->getTemplate($this->data, 'templates/header_admin',$body, 'templates/footer');
 	}
 
 	public function login(){
 		$this->load->library('session');
 		$this->load->model('customer');
-		$data = $this->input->get();
-		if($data){
-			$u = $data['u'];
-			$p = $data['p'];
-			if ($u && $p) {
-				if ($this->customer->checkLogin($u, $p)) {
-					$data = array(
-					   'logged' => TRUE
-					);
-					$this->session->set_userdata($data);
-					$this->load->helper('url');
-					redirect(base_url().'admin');
+		$this->load->helper('url');
+		if(!$this->session->userdata('logged')){
+			$data = $this->input->get();
+			if($data){
+				$u = $data['u'];
+				$p = $data['p'];
+				if ($u && $p) {
+					if ($this->customer->checkLogin($u, $p)) {
+						$data = array(
+						   'logged' => TRUE
+						);
+						$this->session->set_userdata($data);
+						redirect(base_url().'admin');
+					}
 				}
+			}else{
+				redirect(base_url().'admin');
 			}
+		}else{
+			redirect(base_url().'admin');
 		}
 	}
 
+	public function posts(){
+		$this->index();
+	}
 }
