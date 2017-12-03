@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $logged = $this->session->userdata('logged');
 $this->load->helper('url'); 
  ?>
+ <?php 
+  ?>
 <body>
 	<div class="main container">
 		<?php // Check Login ?>
@@ -13,21 +15,21 @@ $this->load->helper('url');
 			</div>
 		<?php else: ?>
 			<div class="admin-panel row">
-				<div class="col-4">
+				<div class="col-3">
 					<div class="card">
 						<div class="card-header">
 							POST
 						</div>
 						<ul class="list-group list-group-flush">
 						    <li class="list-group-item">
-								<a href="<?php echo base_url(); ?>/admin/posts/add">Add new post</a>
+								<a href="<?php echo base_url(); ?>admin/posts/add">Add new post</a>
 						    </li>
 						    <li class="list-group-item">Post manager</li>
 						    <li class="list-group-item">Catalog</li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-8">
+				<div class="col-9">
 					content
 				</div>
 			</div>
