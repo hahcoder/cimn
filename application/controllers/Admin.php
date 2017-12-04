@@ -63,23 +63,4 @@ class Admin extends CI_Controller {
 			redirect(base_url().'admin');
 		}
 	}
-
-	public function posts(){
-		$this->load->helper('url');
-		$data = $this->input->get();
-		echo (current_url());
-		// switch ($action) {
-		// 	case 'add':
-		// 		# code...
-		// 		break;
-
-		// 	case 'manager':
-		// 		# code...
-		// 		break;
-			
-		// 	default:
-		// 		# code...
-		// 		break;
-		// }
-	}
 }

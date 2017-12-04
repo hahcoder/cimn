@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Posts extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,14 +20,15 @@ class Home extends CI_Controller {
 	 */
 
 	private $data = array(
-			    'title' => 'Home Page'
+			    'title' => 'Admin Panel'
 			);
+
 
 	public function index()
 	{
-		$this->load->view('templates/head', $this->data);
-		$this->load->view('templates/header');
-		$this->load->view('home');
-		$this->load->view('templates/footer');
+		$this->load->library('session');
+		$this->load->model('skin');
+
+		echo 'abc';
 	}
 }
