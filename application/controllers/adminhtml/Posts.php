@@ -31,4 +31,9 @@ class Posts extends CI_Controller {
 
 		echo 'abc';
 	}
+
+	public function add()
+	{
+		echo 'Add post';
+	}
 }
