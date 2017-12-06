@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Login extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -27,14 +27,27 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('session');
-		$this->load->model('skin');
-
-		if($this->session->userdata('logged')){
-			$body = 'admin/admin';
+		$this->load->model('customer');
+		$this->load->helper('url');
+		if(!$this->session->userdata('logged')){
+			$data = $this->input->get();
+			if($data){
+				$u = $data['u'];
+				$p = $data['p'];
+				if ($u && $p) {
+					if ($this->customer->checkLogin($u, $p)) {
+						$data = array(
+						   'logged' => TRUE
+						);
+						$this->session->set_userdata($data);
+						redirect(base_url().'admin');
+					}
+				}
+			}else{
+				redirect(base_url().'admin');
+			}
 		}else{
-			$body = 'admin/login';
+			redirect(base_url().'admin');
 		}
-
-		$this->skin->getTemplate($this->data, 'templates/header_admin',$body, 'templates/footer');
 	}
 }
