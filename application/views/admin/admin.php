@@ -16,18 +16,9 @@ $this->load->helper('url');
 		<?php else: ?>
 			<div class="admin-panel row">
 				<div class="col-3">
-					<div class="card">
-						<div class="card-header">
-							POST
-						</div>
-						<ul class="list-group list-group-flush">
-						    <li class="list-group-item">
-								<a href="<?php echo base_url(); ?>admin/posts/add">Add new post</a>
-						    </li>
-						    <li class="list-group-item">Post manager</li>
-						    <li class="list-group-item">Catalog</li>
-						</ul>
-					</div>
+					<?php 
+						$this->load->view('admin/menu/left');
+					 ?>
 				</div>
 				<div class="col-9">
 					content
