@@ -1,8 +1,8 @@
 <?php $this->load->helper('url'); ?>
 
 <div class="card">
-	<div class="card-header">
-		POST
+	<div class="card-header text-uppercase">
+		posts
 	</div>
 	<ul class="list-group list-group-flush">
 	    <li class="list-group-item">

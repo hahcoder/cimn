@@ -21,7 +21,14 @@ $this->load->helper('url');
 					 ?>
 				</div>
 				<div class="col-9">
-					content
+					<div class="card">
+						<div class="card-header text-uppercase">
+							<?php echo $title ?>
+						</div>
+						<div class="card-body">
+							<?php $this->load->view($content);?>
+						</div>
+					</div>
 				</div>
 			</div>
 		<?php endif; ?>

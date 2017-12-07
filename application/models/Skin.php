@@ -10,7 +10,7 @@ class Skin extends CI_Model {
     	}
 		$this->load->view('templates/head',$headData);
 		$this->load->view($header);
-		$this->load->view($body);
+		$this->load->view($body['view'],$body['data']);
 		$this->load->view($footer);
 	}
 

@@ -20,7 +20,8 @@ class Posts extends CI_Controller {
 	 */
 
 	private $data = array(
-			    'title' => 'Admin Panel'
+				'title'   => 'Posts Manager',
+				'content' => 'admin/posts/add'
 			);
 
 
@@ -33,7 +34,14 @@ class Posts extends CI_Controller {
 	}
 
 	public function add()
-	{
-		echo 'Add post';
+	{	
+		$this->load->model('skin');
+		$this->load->library('session');
+		$this->data['title'] = 'Add new post';
+		$body = array(
+			'view' => 'admin/admin',
+			'data' => $this->data
+		);
+		$this->skin->getTemplate($this->data, 'templates/header_admin',$body, 'templates/footer');
 	}
 }
