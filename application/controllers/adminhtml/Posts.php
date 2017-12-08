@@ -42,6 +42,6 @@ class Posts extends CI_Controller {
 			'view' => 'admin/admin',
 			'data' => $this->data
 		);
-		$this->skin->getTemplate($this->data, 'templates/header_admin',$body, 'templates/footer');
+		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
 	}
 }

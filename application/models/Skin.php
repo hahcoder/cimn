@@ -3,15 +3,15 @@ class Skin extends CI_Model {
 
     public function getTemplate($headData, $header, $body, $footer){
     	if($header == null){
-    		$header = 'templates/header';
+    		$header = 'header';
     	}
     	if($footer == null){
-    		$footer = 'templates/footer';
+    		$footer = 'footer';
     	}
 		$this->load->view('templates/head',$headData);
-		$this->load->view($header);
+		$this->load->view('templates/'.$header);
 		$this->load->view($body['view'],$body['data']);
-		$this->load->view($footer);
+		$this->load->view('templates/'.$footer);
 	}
 
 }

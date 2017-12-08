@@ -20,7 +20,8 @@ class Admin extends CI_Controller {
 	 */
 
 	private $data = array(
-			    'title' => 'Admin Panel'
+				'title'   => 'Admin Panel',
+				'content' => null
 			);
 
 
@@ -34,7 +35,7 @@ class Admin extends CI_Controller {
 		}else{
 			$body['view'] = 'admin/login';
 		}
-		$body['data'] = null;
-		$this->skin->getTemplate($this->data, 'templates/header_admin',$body, 'templates/footer');
+		$body['data'] = $this->data;
+		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
 	}
 }

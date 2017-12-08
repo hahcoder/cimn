@@ -11,7 +11,7 @@ $this->load->helper('url');
 		<?php // Check Login ?>
 		<?php if(!$logged): ?>
 			<div class="login-form">
-				Please login
+				<?php redirect(base_url().'admin'); ?>
 			</div>
 		<?php else: ?>
 			<div class="admin-panel row">
@@ -26,7 +26,11 @@ $this->load->helper('url');
 							<?php echo $title ?>
 						</div>
 						<div class="card-body">
-							<?php $this->load->view($content);?>
+							<?php 
+								if ($content) {
+									$this->load->view($content);
+								}
+							?>
 						</div>
 					</div>
 				</div>
