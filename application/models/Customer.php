@@ -4,11 +4,15 @@ class Customer extends CI_Model {
 	public function checkLogin($u, $p){
 		if ($u && $p) {
 			$this->load->database();
-			$this->db->select('user_name, password');
+			$this->db->select('user_name, password,first_name');
 			$this->db->where('user_name',$u);
 			$this->db->where('password',md5($p));
 			$q = $this->db->get('customer');
 			if ($q->num_rows() == 1) {
+				// $data = array(
+				//    'first_name' => TRUE
+				// );
+				// $this->session->set_userdata($data);
 				return true;
 			}else{
 				return false;
