@@ -50,4 +50,13 @@ class Login extends CI_Controller {
 			redirect(base_url().'admin');
 		}
 	}
+
+	public function logout()
+	{
+		$this->load->library('session');
+		$this->load->model('customer');
+		$this->load->helper('url');
+		$this->session->unset_userdata('logged');
+		redirect(base_url().'admin');
+	}
 }
