@@ -11,16 +11,12 @@ $this->load->helper('url');
 		<?php // Check Login ?>
 		<?php if(!$logged): ?>
 			<div class="login-form">
-				<?php redirect(base_url().'admin'); ?>
+				<?php redirect('/admin'); ?>
 			</div>
 		<?php else: ?>
 			<div class="admin-panel row">
-				<div class="col-3">
-					<?php 
-						$this->load->view('admin/menu/left');
-					 ?>
-				</div>
-				<div class="col-9">
+				<?php $this->load->view('admin/menu/left');?>
+				<div class="col-12">
 					<div class="card">
 						<div class="card-header text-uppercase">
 							<?php echo $title ?>

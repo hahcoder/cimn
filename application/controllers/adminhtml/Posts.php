@@ -61,7 +61,7 @@ class Posts extends CI_Controller {
 		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
 	}
 
-	public function beforeProcess()
+	private function beforeProcess()
 	{
 		$this->load->library('session');
 		$this->load->model('customer');

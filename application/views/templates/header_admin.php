@@ -1,5 +1,5 @@
-<div class="container-fluid bg-dark header">
-	<div class="row">
+<div class="container header">
+	<div class="col-12 bg-dark">
 		<div class="col"></div>
 		<div class="col text-right">
 			<div class="user-link text-light">
@@ -13,5 +13,4 @@
 			</div>
 		</div>
 	</div>
-	
 </div>
