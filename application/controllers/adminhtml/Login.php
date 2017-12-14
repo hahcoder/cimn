@@ -35,19 +35,16 @@ class Login extends CI_Controller {
 				$u = $data['u'];
 				$p = $data['p'];
 				if ($u && $p) {
-					if ($this->customer->checkLogin($u, $p)) {
-						$data = array(
-						   'logged' => TRUE
-						);
-						$this->session->set_userdata($data);
-						redirect(base_url().'admin');
+					if ($this->customer->Login($u, $p)) {
+						
+						redirect('/admin');
 					}
 				}
 			}else{
-				redirect(base_url().'admin');
+				redirect('/admin');
 			}
 		}else{
-			redirect(base_url().'admin');
+			redirect('/admin');
 		}
 	}
 
@@ -55,8 +52,7 @@ class Login extends CI_Controller {
 	{
 		$this->load->library('session');
 		$this->load->model('customer');
-		$this->load->helper('url');
 		$this->session->unset_userdata('logged');
-		redirect(base_url().'admin');
+		redirect('/admin');
 	}
 }

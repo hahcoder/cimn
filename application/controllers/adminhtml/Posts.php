@@ -24,24 +24,50 @@ class Posts extends CI_Controller {
 				'content' => 'admin/posts/add'
 			);
 
-
-	public function index()
-	{
-		$this->load->library('session');
-		$this->load->model('skin');
-
-		echo 'abc';
-	}
-
 	public function add()
 	{	
 		$this->load->model('skin');
-		$this->load->library('session');
+		
+		$this->beforeProcess();
 		$this->data['title'] = 'Add new post';
 		$body = array(
 			'view' => 'admin/admin',
 			'data' => $this->data
 		);
 		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
+	}
+
+	public function save()
+	{
+		$this->load->model('postsModel');
+
+		$this->beforeProcess();
+		$data = $this->input->post();
+		$this->postsModel->saveNew($data);
+		redirect('admin/posts/manager');
+	}
+
+	public function manager()
+	{
+		$this->data['content'] = 'admin/posts/manager';
+		$this->load->model('skin');
+		
+		$this->beforeProcess();
+		$this->data['title'] = 'Posts Manager';
+		$body = array(
+			'view' => 'admin/admin',
+			'data' => $this->data
+		);
+		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
+	}
+
+	public function beforeProcess()
+	{
+		$this->load->library('session');
+		$this->load->model('customer');
+		$this->load->helper('url');
+		if (!$this->customer->checkLogin()) {
+			$this->customer->backtoAdmin();
+		}
 	}
 }

@@ -1,27 +1,21 @@
 <?php $this->load->helper('url'); ?>
 
-<form>
+<form method="post" action="<?php echo base_url().'admin/posts/save'; ?>">
 	<div class="form-group">
 		<label class="col-form-label" for="title">Post Title</label>
-		<input type="text" class="form-control" id="title" required>
-	</div>
-	<div class="form-group">
-		<label class="col-form-label" for="categories">Categories</label>
-		<select multiple class="form-control" id="categories">
-	      <option>cat-1</option>
-	      <option>cat-2</option>
-	      <option>cat-3</option>
-	      <option>cat-4</option>
-	      <option>cat-5</option>
-	    </select>
+		<input name="title" type="text" class="form-control" required value="Post Title">
 	</div>
 	<div class="form-group">
 		<label class="col-form-label" for="content">Post Content</label>
-		<textarea type="text" class="form-control" id="content" required></textarea>
+		<textarea name="content" type="text" class="form-control" rows="10" required>abc</textarea>
 	</div>  
 	<div class="form-group">
+		<label class="col-form-label" for="key_word">Meta Keyword</label>
+		<textarea name="keyword" type="text" class="form-control" required>abc</textarea>
+	</div> 
+	<div class="form-group">
 		<label class="col-form-label" for="image">Image (URL)</label>
-		<input type="text" class="form-control" id="image">
+		<input name="image" type="text" class="form-control">
 	</div> 
 	<div class="text-right">
 		<button class="btn btn-primary" type="submit">Save</button>
