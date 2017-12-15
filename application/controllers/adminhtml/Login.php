@@ -53,6 +53,7 @@ class Login extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('customer');
 		$this->session->unset_userdata('logged');
-		redirect('/admin');
+		$this->load->helper('url');
+		redirect('admin');
 	}
 }
