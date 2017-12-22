@@ -24,7 +24,11 @@ $this->load->helper('url');
 						<div class="card-body">
 							<?php 
 								if ($content) {
-									$this->load->view($content);
+									if (isset($params)) {
+										$this->load->view($content,$params);
+									}else{
+										$this->load->view($content);
+									}
 								}
 							?>
 						</div>

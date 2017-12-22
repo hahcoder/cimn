@@ -17,6 +17,7 @@
 	<link href="<?php echo $url; ?>skin/css/styles.css" rel="stylesheet">
 	<?php if($dir == 'adminhtml/' || $router == 'admin'): ?>
 	<link href="<?php echo $url; ?>skin/css/styles_admin.css" rel="stylesheet">
+	<script src="<?php echo $url; ?>tools/ckeditor/ckeditor.js"></script>
 	<?php endif ?>
 	<!-- Js -->
 	<script src="<?php echo $url; ?>skin/js/jquery-3.2.1.min.js"></script>

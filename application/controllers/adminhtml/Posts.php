@@ -21,7 +21,7 @@ class Posts extends CI_Controller {
 
 	private $data = array(
 				'title'   => 'Posts Manager',
-				'content' => 'admin/posts/add'
+				'content' => 'admin/posts/form'
 			);
 
 	public function add()
@@ -51,7 +51,8 @@ class Posts extends CI_Controller {
 	{
 		$this->data['content'] = 'admin/posts/manager';
 		$this->load->model('skin');
-		
+		$this->load->model('postsModel');
+
 		$this->beforeProcess();
 		$this->data['title'] = 'Posts Manager';
 		$body = array(
@@ -60,14 +61,37 @@ class Posts extends CI_Controller {
 		);
 		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
 	}
+	
+	public function edit($id)
+	{
+		$this->load->model('skin');
+		
+		$this->beforeProcess();
+		$this->data['title'] = 'Edit post';
+		$this->data['params'] = array(
+								'id' => $id
+								);
+
+		$body = array(
+			'view' => 'admin/admin',
+			'data' => $this->data
+		);
+		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
+	}
+
+	public function delete($id)
+	{
+		$this->load->model('skin');
+		$this->load->model('postsModel');
+
+		$this->beforeProcess();
+		$this->postsModel->deletePost($id);
+		redirect('admin/posts/manager');
+	}
 
 	private function beforeProcess()
 	{
-		$this->load->library('session');
-		$this->load->model('customer');
-		$this->load->helper('url');
-		if (!$this->customer->checkLogin()) {
-			$this->customer->backtoAdmin();
-		}
+		$this->load->model('postsModel');
+		$this->postsModel->beforeProcess();
 	}
 }
