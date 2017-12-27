@@ -6,6 +6,7 @@
 	$CI->message->getMsg();
 ?>
 <?php $posts = $this->postsModel->getPosts(); ?>
+<div id="data"></div>
 <div class="text-right">
 	<div class="form-group">
 		<a class="btn btn-success" href="<?php echo base_url(); ?>admin/posts/add"" role="button">Add new post</a>
