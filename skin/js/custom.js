@@ -5,3 +5,7 @@ jQuery(document).ready(function($) {
 		par.children('.nav-content').show();
 	});
 });
+
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})

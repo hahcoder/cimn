@@ -21,8 +21,9 @@
 	<?php endif ?>
 	<!-- Js -->
 	<script src="<?php echo $url; ?>skin/js/jquery-3.2.1.min.js"></script>
-	<script src="<?php echo $url; ?>skin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?php echo $url; ?>skin/bootstrap/js/popper.min.js"></script>
 	<script src="<?php echo $url; ?>skin/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo $url; ?>skin/bootstrap/js/bootstrap.min.js"></script>
 	<script src="<?php echo $url; ?>skin/fontawesome/js/fontawesome-all.min.js"></script>
 	<script src="<?php echo $url; ?>skin/js/custom.js"></script>
 </head>

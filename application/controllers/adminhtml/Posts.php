@@ -43,8 +43,23 @@ class Posts extends CI_Controller {
 
 		$this->beforeProcess();
 		$data = $this->input->post();
-		$this->postsModel->saveNew($data);
-		redirect('admin/posts/manager');
+		if ($this->postsModel->save($data)) {
+			redirect('admin/posts/manager');
+		}else{
+			redirect('admin/posts/add');
+		}
+	}
+
+	public function update($id)
+	{
+		$this->load->model('postsModel');
+		$this->load->model('message');
+
+		$this->beforeProcess();
+		$data = $this->input->post();
+		$this->postsModel->update($id,$data);
+		$this->message->addSuccess('The Post has been saved');
+		redirect('admin/posts/edit/'.$id);
 	}
 
 	public function manager()
