@@ -31,6 +31,7 @@
 	<?php $post = $this->postsModel->getPost($id);  
 		if(count($post) == 1): $post = $post[0]; ?>
 			<div class="text-right">
+				<a class="btn btn-secondary" href="<?php echo base_url(); ?>admin/posts/manager" role="button">Manager</a>
 				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
 					Delete
 				</button>

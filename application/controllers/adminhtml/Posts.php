@@ -62,14 +62,16 @@ class Posts extends CI_Controller {
 		redirect('admin/posts/edit/'.$id);
 	}
 
-	public function manager()
+	public function manager($p = null)
 	{
 		$this->data['content'] = 'admin/posts/manager';
 		$this->load->model('skin');
 		$this->load->model('postsModel');
-
 		$this->beforeProcess();
 		$this->data['title'] = 'Posts Manager';
+		$this->data['params'] = array(
+								'p' => $p
+								);
 		$body = array(
 			'view' => 'admin/admin',
 			'data' => $this->data
