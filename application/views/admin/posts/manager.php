@@ -4,9 +4,8 @@
 	$CI =&get_instance();
 	$CI->load->model('message');
 	$CI->message->getMsg();
-	echo $p;
 ?>
-<?php $posts = $this->postsModel->getPosts(); ?>
+<?php $posts = $this->postsModel->getPosts($p); ?>
 <div id="data"></div>
 <div class="text-right">
 	<div class="form-group">
@@ -96,8 +95,9 @@
 <?php 
 	$CI->load->library('pagination');
 	$config['base_url'] = 'http://cimn.local/admin/posts/manager';
-	$config['total_rows'] = 200;
+	$config['total_rows'] = 21;
 	$config['per_page'] = 20;
+	$config['use_page_numbers'] = true;
 
 	$CI->pagination->initialize($config);
 

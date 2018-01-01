@@ -11,10 +11,13 @@ class PostsModel extends CI_Model {
         }
     }
 
-    public function getPosts()
+    public function getPosts($p = 0)
     {
+        if ($p > 0) $p--;
+        $limit = $this->getConfig('limit') ? $this->getConfig('limit') : 20 ;
         $this->load->database();
         $this->db->select('*');
+        $this->db->limit($limit,$p * $limit);
         $q = $this->db->get('posts');
         return $q->result();
     }
@@ -76,5 +79,19 @@ class PostsModel extends CI_Model {
         $this->load->database();
         $this->db->where('id',$id);
         $this->db->delete('posts');
+    }
+
+    public function getConfig($str)
+    {
+        $this->load->database();
+        $this->db->select($str);
+        $q = $this->db->get('posts_config');
+        if (count($q->result()) == 1) {
+            return $q->result()[0]->$str;
+        }else{
+            $this->load->model('Message');
+            $this->Message->addError('Config value does not found');
+        }
+        return false;
     }
 }

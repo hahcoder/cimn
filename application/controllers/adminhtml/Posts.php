@@ -24,6 +24,20 @@ class Posts extends CI_Controller {
 				'content' => 'admin/posts/form'
 			);
 
+	public function config()
+	{
+		$this->load->model('skin');
+		
+		$this->beforeProcess();
+		$this->data['title'] = 'Posts configurations';
+		$this->data['content'] = 'admin/posts/config';
+		$body = array(
+			'view' => 'admin/admin',
+			'data' => $this->data
+		);
+		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
+	}
+
 	public function add()
 	{	
 		$this->load->model('skin');

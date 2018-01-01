@@ -57,6 +57,14 @@ INSERT INTO `posts` (`id`, `title`, `content`, `keyword`, `date_edit`, `user_nam
 (52,	'Quán ăn Mẹt Khói 19',	'<p>Nội dung post test</p>\r\n',	'',	'2017-12-28 10:17:17',	'hah',	'https://scontent.fdad3-1.fna.fbcdn.net/v/t1.0-9/14225540_1757409201183882_5434072354305871087_n.jpg?oh=0bf19a38d3a5eba3ec290f221170f2d1&oe=5AF958D4',	'2017-12-28 10:17:17'),
 (53,	'Quán ăn Mẹt Khói 20',	'<p>Nội dung post test</p>\r\n',	'',	'2017-12-28 10:17:17',	'hah',	'https://scontent.fdad3-1.fna.fbcdn.net/v/t1.0-9/14225540_1757409201183882_5434072354305871087_n.jpg?oh=0bf19a38d3a5eba3ec290f221170f2d1&oe=5AF958D4',	'2017-12-28 10:17:17');
 
+DROP TABLE IF EXISTS `posts_config`;
+CREATE TABLE `posts_config` (
+  `limit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `posts_config` (`limit`) VALUES
+(20);
+
 DROP TABLE IF EXISTS `user_type`;
 CREATE TABLE `user_type` (
   `type` int(11) NOT NULL AUTO_INCREMENT,
@@ -68,4 +76,4 @@ INSERT INTO `user_type` (`type`, `name`) VALUES
 (1,	'administrator'),
 (2,	'poster');
 
--- 2017-12-29 09:23:58
+-- 2018-01-01 10:41:55
