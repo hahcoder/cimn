@@ -109,17 +109,17 @@ class PostsModel extends CI_Model {
             'per_page'         => $this->getConfig('limit'),
             'use_page_numbers' => true,
             'num_links'        => $this->getConfig('num_link'),
-            'full_tag_open'  => '<ul class="pagination">',
-            'full_tag_close' => '</ul>',
-            'num_tag_open' => '<li class="page-item">',
-            'num_tag_close' => '</li>',
-            'cur_tag_open' => '<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">',
-            'cur_tag_close' => '</a></li>',
-            'attributes' => array('class' => 'page-link'),
-            'next_link' => '<span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span>',
-            'prev_link' => '<span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span>',
-            'first_link' => 'First',
-            'last_link' => 'Last'
+            'full_tag_open'  => $this->getConfig('full_tag_open'),
+            'full_tag_close' => $this->getConfig('full_tag_close'),
+            'num_tag_open' => $this->getConfig('num_tag_open'),
+            'num_tag_close' => $this->getConfig('num_tag_close'),
+            'cur_tag_open' => $this->getConfig('cur_tag_open'),
+            'cur_tag_close' => $this->getConfig('cur_tag_close'),
+            'attributes' => array('class' => $this->getConfig('class')),
+            'next_link' => $this->getConfig('next_link'),
+            'prev_link' => $this->getConfig('prev_link'),
+            'first_link' => $this->getConfig('first_link'),
+            'last_link' => $this->getConfig('last_link')
         );
         $this->pagination->initialize($config);
 

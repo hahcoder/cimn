@@ -18,7 +18,7 @@ $this->load->helper('url');
 				<?php $this->load->view('admin/menu/left');?>
 				<div class="col-12">
 					<div class="card">
-						<div class="card-header text-uppercase">
+						<div class="card-header text-uppercase bg-info text-light">
 							<?php echo $title ?>
 						</div>
 						<div class="card-body">

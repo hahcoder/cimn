@@ -9,7 +9,7 @@
 <div id="data"></div>
 <div class="text-right">
 	<div class="form-group">
-		<a class="btn btn-success" href="<?php echo base_url(); ?>admin/posts/add" role="button">Add new post</a>
+		<a class="btn btn-success" href="<?php echo base_url(); ?>admin/posts/add" role="button"><i class="far fa-plus-square"></i> New post</a>
 	</div>
 </div>
 <?php if(count($posts) > 0) : ?>
@@ -21,7 +21,7 @@
 		      <th scope="col">Thumbnail</th>
 		      <th scope="col">Last edited</th>
 		      <th scope="col" class="text-center">Info</th>
-		      <th scope="col">Action</th>
+		      <th scope="col">Actions</th>
 		    </tr>
 		</thead>
 		<tbody>

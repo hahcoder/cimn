@@ -7,31 +7,88 @@
 ?>
 <form method="post" action="<?php echo base_url().'admin/posts/config'; ?>">
 	<div class="form-group">
-      <div class="input-group col-md-3">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Posts per page</div>
+         <div class="card">
+            <div class="card-header text-uppercase">
+                Posts
+            </div>
+            <div class="card-body">
+                <div class="input-group col-md-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Posts per page</div>
+                    </div>
+                    <input name="limit" type="number" class="form-control " value="<?php echo $this->postsModel->getConfig('limit') ?>"> 
+                    <small class="text-muted">
+    	               Maximum number of posts per page.
+                    </small>
+                </div>
+            </div>
         </div>
-        <input name="limit" type="number" class="form-control " value="<?php echo $this->postsModel->getConfig('limit') ?>"> 
-        <small class="text-muted">
-	      Maximum number of posts per page.
-	    </small>
-      </div>
     </div>	
-
     <div class="form-group">
-      <div class="input-group col-md-3">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Link number</div>
+        <div class="card">
+            <div class="card-header text-uppercase">
+                Pagination
+            </div>
+            <div class="card-body">
+                <?php 
+                    $list = array(
+                        ['name' => 'num_link','type' => 'number', 
+                            'title' => 'Link Number',
+                            'hint'  => 'Number link of Pagination will be showed.'
+                        ],
+                        ['name' => 'full_tag_open','type' => 'text'],
+                        ['name' => 'full_tag_close','type' => 'text'],
+                        ['name' => 'num_tag_open','type' => 'text'],
+                        ['name' => 'num_tag_close','type' => 'text'],
+                        ['name' => 'cur_tag_open','type' => 'text'],
+                        ['name' => 'cur_tag_close','type' => 'text'],
+                        ['name' => 'class','type' => 'text'],
+                        ['name' => 'next_link','type' => 'text'],
+                        ['name' => 'prev_link','type' => 'text'],
+                        ['name' => 'first_link','type' => 'text'],
+                        ['name' => 'last_link','type' => 'text']
+                    );
+                    foreach ($list as $field) {
+                        switch ($field['type']) {
+                            case 'number': ?>
+                                <div class="input-group col-md-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <?php 
+                                                if (isset($field['title'])) echo $field['title'];
+                                                else echo $field['name'];?>
+                                        </div>
+                                    </div>
+                                    <input name="<?php echo $field['name'] ?>" type="number" class="form-control " value="<?php echo $this->postsModel->getConfig($field['name']) ?>"> 
+                                </div>
+                                <div class="input-group col">
+                                    <small class="text-muted"><?php if(isset($field['hint'])) echo $field['hint'] ?></small>
+                                </div>
+                            <?php 
+                                break;
+
+                            default: ?>
+                                <div class="input-group col">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><?php 
+                                                if (isset($field['title'])) echo $field['title'];
+                                                else echo $field['name'];?></div>
+                                    </div>
+                                    <input name="<?php echo $field['name']; ?>" type="text" class="form-control " value="<?php echo htmlspecialchars($this->postsModel->getConfig($field['name']))  ?>"> 
+                                </div>
+                                <div class="input-group col">
+                                    <small class="text-muted"><?php if(isset($field['hint'])) echo $field['hint'] ?></small>
+                                </div>
+                            <?php    
+                                break;
+                        }
+                    }
+                 ?>
+
+            </div>
         </div>
-        <input name="num_link" type="number" class="form-control " value="<?php echo $this->postsModel->getConfig('num_link') ?>"> 
-      </div>
-      <div class="input-group col">
-        <small class="text-muted">
-	      Number link of Pagination will be showed.
-	    </small>
-      </div>
     </div>
-	<div class="text-right">
-		<button class="btn btn-primary" type="submit">Save</button>
+	<div class="text-left col">
+		<button class="btn btn-primary" type="submit"><i class="far fa-save"></i> Save</button>
 	</div>
 </form>

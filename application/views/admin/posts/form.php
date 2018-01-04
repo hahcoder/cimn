@@ -24,7 +24,7 @@
 			<input name="image" type="text" class="form-control">
 		</div> 
 		<div class="text-right">
-			<button class="btn btn-primary" type="submit">Save</button>
+			<button class="btn btn-primary" type="submit"><i class="far fa-save"></i> Save</button>
 		</div>
 	</form>
 <?php else: ?>
@@ -33,7 +33,7 @@
 			<div class="text-right">
 				<a class="btn btn-secondary" href="<?php echo base_url(); ?>admin/posts/manager" role="button">Manager</a>
 				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-					Delete
+					<i class="far fa-trash-alt"></i> Delete
 				</button>
 				<!-- Modal -->
 				<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -80,7 +80,7 @@
 					</div>
 				<?php endif; ?>
 				<div class="text-right">
-					<button class="btn btn-primary" type="submit">Save</button>
+					<button class="btn btn-primary" type="submit"><i class="far fa-save"></i> Save</button>
 				</div>
 			</form>
 	<?php endif; ?>
