@@ -54,4 +54,3 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['admin/(.+)'] = 'adminhtml/$1';
-$route['adminhtml/posts/delete/(.+)'] = 'adminhtml/posts/delete/?id=$1';

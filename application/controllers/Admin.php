@@ -29,13 +29,19 @@ class Admin extends CI_Controller {
 	{
 		$this->load->library('session');
 		$this->load->model('skin');
-		$body  = array();
-		if($this->session->userdata('logged')){
-			$body['view'] = 'admin/admin';
-		}else{
-			$body['view'] = 'admin/login';
+		$this->load->helper('url');
+		if(!$this->session->userdata('logged')){
+			redirect('admin/login');
 		}
-		$body['data'] = $this->data;
+		$body  = array(
+			'view' => 'admin/admin',
+			'data' => $this->data
+		);
 		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
+	}
+
+	public function login()
+	{
+		echo 'a';
 	}
 }

@@ -9,7 +9,7 @@
 <div id="data"></div>
 <div class="text-right">
 	<div class="form-group">
-		<a class="btn btn-success" href="<?php echo base_url(); ?>admin/posts/add"" role="button">Add new post</a>
+		<a class="btn btn-success" href="<?php echo base_url(); ?>admin/posts/add" role="button">Add new post</a>
 	</div>
 </div>
 <?php if(count($posts) > 0) : ?>
@@ -91,15 +91,6 @@
 		  </tbody>
 	</table>
 <?php endif; ?>
-
 <?php 
-	$CI->load->library('pagination');
-	$config['base_url'] = 'http://cimn.local/admin/posts/manager';
-	$config['total_rows'] = 21;
-	$config['per_page'] = 20;
-	$config['use_page_numbers'] = true;
-
-	$CI->pagination->initialize($config);
-
-	echo $CI->pagination->create_links();
+	$this->postsModel->pager(base_url().'admin/'.$this->router->fetch_class().'/'.$this->router->fetch_method());
  ?>

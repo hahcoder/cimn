@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
 	$('.danger').popover({ 
 	    html : true,
 	    content: function() {
-	      return $('#popover_content_wrapper').html();
+	      return $(this).next('.popover_content_wrapper').html();
 	    }
 	  });
 });

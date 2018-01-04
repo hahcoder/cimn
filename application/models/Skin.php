@@ -9,7 +9,9 @@ class Skin extends CI_Model {
     		$footer = 'footer';
     	}
 		$this->load->view('templates/head',$headData);
-		$this->load->view('templates/'.$header);
+        if($header != 'no'){
+		  $this->load->view('templates/'.$header);
+        }
 		$this->load->view($body['view'],$body['data']);
 		$this->load->view('templates/'.$footer);
 	}

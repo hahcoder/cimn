@@ -27,9 +27,19 @@ class Posts extends CI_Controller {
 	public function config()
 	{
 		$this->load->model('skin');
-		
+		$this->load->model('postsModel');
+		$this->load->model('message');
+		$data = $this->input->post();
 		$this->beforeProcess();
-		$this->data['title'] = 'Posts configurations';
+		if ($data) {
+			if($this->postsModel->saveConfig($data)){
+				$this->message->addSuccess('Your changes have been saved');
+			}else{
+				$this->message->addError('Something went wrong while save');
+			}
+			redirect('/admin/posts/config');
+		}
+		$this->data['title'] = 'Posts setting';
 		$this->data['content'] = 'admin/posts/config';
 		$body = array(
 			'view' => 'admin/admin',
@@ -72,7 +82,7 @@ class Posts extends CI_Controller {
 		$this->beforeProcess();
 		$data = $this->input->post();
 		$this->postsModel->update($id,$data);
-		$this->message->addSuccess('The Post has been saved');
+		$this->message->addSuccess('Post has been saved');
 		redirect('admin/posts/edit/'.$id);
 	}
 

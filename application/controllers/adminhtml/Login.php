@@ -36,12 +36,16 @@ class Login extends CI_Controller {
 				$p = $data['p'];
 				if ($u && $p) {
 					if ($this->customer->Login($u, $p)) {
-						
 						redirect('/admin');
 					}
 				}
 			}else{
-				redirect('/admin');
+				$this->load->model('skin');
+				$body  = array(
+					'view' => 'admin/login',
+					'data' => $this->data
+				);
+				$this->skin->getTemplate($this->data,'no',$body, 'footer_admin');
 			}
 		}else{
 			redirect('/admin');
