@@ -19,6 +19,15 @@ class Login extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('session');
+		$this->load->model('customer');
+		$this->load->helper('url');
+		$this->load->model('skin');
+    }
+
 	private $data = array(
 			    'title' => 'Admin Panel'
 			);
@@ -26,9 +35,6 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->library('session');
-		$this->load->model('customer');
-		$this->load->helper('url');
 		if(!$this->session->userdata('logged')){
 			$data = $this->input->get();
 			if($data){
@@ -40,7 +46,6 @@ class Login extends CI_Controller {
 					}
 				}
 			}else{
-				$this->load->model('skin');
 				$body  = array(
 					'view' => 'admin/login',
 					'data' => $this->data
@@ -54,10 +59,7 @@ class Login extends CI_Controller {
 
 	public function logout()
 	{
-		$this->load->library('session');
-		$this->load->model('customer');
 		$this->session->unset_userdata('logged');
-		$this->load->helper('url');
 		redirect('admin');
 	}
 }

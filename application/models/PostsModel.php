@@ -84,21 +84,37 @@ class PostsModel extends CI_Model {
         $this->load->model('Message');
         
         $this->load->database();
+        $msg = '';
+        foreach ($data as $field => $value) {
+            if (!$this->db->field_exists($field, 'posts_config')) {
+                unset($data[$field]);
+                if($msg == '')
+                    $msg .= $field;
+                else
+                    $msg .= ', '.$field;
+            }
+        }
+        if ($msg != '') {
+            $this->Message->addError($msg. ' does not exits');
+        }
         $this->db->update('posts_config', $data);
         return true;
     }
     public function getConfig($str)
     {
         $this->load->database();
-        $this->db->select($str);
-        $q = $this->db->get('posts_config');
-        if (count($q->result()) == 1) {
-            return $q->result()[0]->$str;
-        }else{
-            $this->load->model('Message');
-            $this->Message->addError('Config value does not found');
+        if ($this->db->field_exists($str, 'posts_config'))
+        {
+            $this->db->select($str);
+            $q = $this->db->get('posts_config');
+            if (count($q->result()) == 1) {
+                return $q->result()[0]->$str;
+            }else{
+                $this->load->model('Message');
+                $this->Message->addError('Config value does not found');
+            }
         }
-        return false;
+        return null;
     }
 
     public function pager($url){

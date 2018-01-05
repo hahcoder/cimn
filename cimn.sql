@@ -60,6 +60,7 @@ INSERT INTO `posts` (`id`, `title`, `content`, `keyword`, `date_edit`, `user_nam
 DROP TABLE IF EXISTS `posts_config`;
 CREATE TABLE `posts_config` (
   `limit` int(11) NOT NULL,
+  `image_default` text NOT NULL,
   `num_link` int(11) NOT NULL,
   `full_tag_open` text NOT NULL,
   `full_tag_close` text NOT NULL,
@@ -74,8 +75,8 @@ CREATE TABLE `posts_config` (
   `last_link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `posts_config` (`limit`, `num_link`, `full_tag_open`, `full_tag_close`, `num_tag_open`, `num_tag_close`, `cur_tag_open`, `cur_tag_close`, `class`, `next_link`, `prev_link`, `first_link`, `last_link`) VALUES
-(20,	5,	'<ul class=\"pagination\">',	'</ul>',	'<li class=\"page-item\">',	'</li>',	'<li class=\"page-item disabled\"><a class=\"page-link\" href=\"#\" tabindex=\"-1\">',	'</a></li>',	'page-link',	'<span aria-hidden=\"true\">&raquo;</span> <span class=\"sr-only\">Next</span>',	'<span aria-hidden=\"true\">&laquo;</span> <span class=\"sr-only\">Previous</span>',	'First',	'Last');
+INSERT INTO `posts_config` (`limit`, `image_default`, `num_link`, `full_tag_open`, `full_tag_close`, `num_tag_open`, `num_tag_close`, `cur_tag_open`, `cur_tag_close`, `class`, `next_link`, `prev_link`, `first_link`, `last_link`) VALUES
+(20,	'14225540_1757409201183882_5434072354305871087_n.jpg',	5,	'<ul class=\"pagination\">',	'</ul>',	'<li class=\"page-item\">',	'</li>',	'<li class=\"page-item disabled\"><a class=\"page-link\" href=\"#\" tabindex=\"-1\">',	'</a></li>',	'page-link',	'<span aria-hidden=\"true\">&raquo;</span> <span class=\"sr-only\">Next</span>',	'<span aria-hidden=\"true\">&laquo;</span> <span class=\"sr-only\">Previous</span>',	'First',	'Last');
 
 DROP TABLE IF EXISTS `user_type`;
 CREATE TABLE `user_type` (
@@ -88,4 +89,4 @@ INSERT INTO `user_type` (`type`, `name`) VALUES
 (1,	'administrator'),
 (2,	'poster');
 
--- 2018-01-04 15:22:28
+-- 2018-01-05 09:58:40

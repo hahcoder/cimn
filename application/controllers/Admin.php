@@ -39,9 +39,4 @@ class Admin extends CI_Controller {
 		);
 		$this->skin->getTemplate($this->data, 'header_admin',$body, 'footer_admin');
 	}
-
-	public function login()
-	{
-		echo 'a';
-	}
 }

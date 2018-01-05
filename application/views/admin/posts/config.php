@@ -16,10 +16,25 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">Posts per page</div>
                     </div>
-                    <input name="limit" type="number" class="form-control " value="<?php echo $this->postsModel->getConfig('limit') ?>"> 
-                    <small class="text-muted">
-    	               Maximum number of posts per page.
+                    <input  name="limit" type="number" class="form-control " 
+                            value ="<?php echo $this->postsModel->getConfig('limit') ?>"
+                            aria-describedby="passwordHelpInline"> 
+                    <small class="text-muted" id="passwordHelpInline">
+                       Maximum number of posts per page.
                     </small>
+                </div>
+
+                <div class="input-group col">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Default Thumbnail</div>
+                    </div>
+                </div>
+                <div class="input-group col-sm-3">
+                    <div class="custom-file">
+                          <input type="file" name="image_default" class="custom-file-input" id="image_default">
+                          <label class="custom-file-label" for="image_default">Choose file</label>
+                    </div>
+                    <?php  $this->load->helper(array('form', 'url')); echo form_open_multipart('upload/do_upload');?>
                 </div>
             </div>
         </div>

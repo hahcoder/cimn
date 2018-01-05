@@ -18,7 +18,13 @@ class Posts extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('skin');
+		$this->load->model('postsModel');
+		$this->load->model('message');
+    }
 	private $data = array(
 				'title'   => 'Posts Manager',
 				'content' => 'admin/posts/form'
@@ -26,9 +32,6 @@ class Posts extends CI_Controller {
 
 	public function config()
 	{
-		$this->load->model('skin');
-		$this->load->model('postsModel');
-		$this->load->model('message');
 		$data = $this->input->post();
 		$this->beforeProcess();
 		if ($data) {
@@ -50,8 +53,6 @@ class Posts extends CI_Controller {
 
 	public function add()
 	{	
-		$this->load->model('skin');
-		
 		$this->beforeProcess();
 		$this->data['title'] = 'Add new post';
 		$body = array(
@@ -63,8 +64,6 @@ class Posts extends CI_Controller {
 
 	public function save()
 	{
-		$this->load->model('postsModel');
-
 		$this->beforeProcess();
 		$data = $this->input->post();
 		if ($this->postsModel->save($data)) {
@@ -76,9 +75,6 @@ class Posts extends CI_Controller {
 
 	public function update($id)
 	{
-		$this->load->model('postsModel');
-		$this->load->model('message');
-
 		$this->beforeProcess();
 		$data = $this->input->post();
 		$this->postsModel->update($id,$data);
@@ -89,8 +85,6 @@ class Posts extends CI_Controller {
 	public function manager($p = null)
 	{
 		$this->data['content'] = 'admin/posts/manager';
-		$this->load->model('skin');
-		$this->load->model('postsModel');
 		$this->beforeProcess();
 		$this->data['title'] = 'Posts Manager';
 		$this->data['params'] = array(
@@ -105,8 +99,6 @@ class Posts extends CI_Controller {
 	
 	public function edit($id)
 	{
-		$this->load->model('skin');
-		
 		$this->beforeProcess();
 		$this->data['title'] = 'Edit post';
 		$this->data['params'] = array(
@@ -122,9 +114,6 @@ class Posts extends CI_Controller {
 
 	public function delete($id)
 	{
-		$this->load->model('skin');
-		$this->load->model('postsModel');
-
 		$this->beforeProcess();
 		$this->postsModel->deletePost($id);
 		redirect('admin/posts/manager');
@@ -132,7 +121,6 @@ class Posts extends CI_Controller {
 
 	private function beforeProcess()
 	{
-		$this->load->model('postsModel');
 		$this->postsModel->beforeProcess();
 	}
 }

@@ -3,8 +3,8 @@
   <div class="row justify-content-md-center">
     <div class="col-4">
     	<div class="card">
-			<div class="card-header text-uppercase">
-				admin login
+			<div class="card-header text-uppercase bg-primary text-light">
+				<i class="fas fa-lock"></i> admin login
 			</div>
 			<div class="card-body">
 		  		<form action="<?php echo base_url(); ?>admin/login">
