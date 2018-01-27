@@ -6,9 +6,9 @@
 				<i class="far fa-file-alt"></i><span>Posts</span>
 			</a>
 			<div class="popover_content_wrapper" style="display: none">
-				<a class="dropdown-item" href="<?php echo base_url(); ?>admin/posts/config">Configurations</a>
 				<a class="dropdown-item" href="<?php echo base_url(); ?>admin/posts/add">Add new post</a>
 				<a class="dropdown-item" href="<?php echo base_url(); ?>admin/posts/manager">Posts manger</a>
+				<a class="dropdown-item" href="<?php echo base_url(); ?>admin/posts/config">Configurations</a>
 			</div>
 		</li>
 	</ul>

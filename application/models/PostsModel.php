@@ -141,4 +141,19 @@ class PostsModel extends CI_Model {
 
         echo $this->pagination->create_links();
     }
+
+    public function addField(){
+        $this->load->dbforge();
+        $fields = array(
+                'address' => array('type' => 'TEXT'),
+                'phone'   => array('type' => 'varchar','constraint' => '12'),
+                'facebook' => array('type' => 'varchar', 'constraint' => '100')
+        );
+        foreach ($fields as $field => $value) {
+            if ($this->db->field_exists($field, 'posts')){
+                unset($fields[$field]);
+            }
+        }
+        $this->dbforge->add_column('posts', $fields);
+    }
 }

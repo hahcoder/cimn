@@ -24,6 +24,7 @@ class Posts extends CI_Controller {
         $this->load->model('skin');
 		$this->load->model('postsModel');
 		$this->load->model('message');
+		$this->postsModel->addField();
     }
 	private $data = array(
 				'title'   => 'Posts Manager',
