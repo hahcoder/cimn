@@ -147,7 +147,8 @@ class PostsModel extends CI_Model {
         $fields = array(
                 'address' => array('type' => 'TEXT'),
                 'phone'   => array('type' => 'varchar','constraint' => '12'),
-                'facebook' => array('type' => 'varchar', 'constraint' => '100')
+                'facebook' => array('type' => 'varchar', 'constraint' => '100'),
+                'video' => array('type' => 'text', 'constraint' => '500')
         );
         foreach ($fields as $field => $value) {
             if ($this->db->field_exists($field, 'posts')){
